@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en-us"> 
+
+	<head>
+		
+		<title>Edit | Car Pooling</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="Mmaboko Tiisetso">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="/styles.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="https://kit.fontawesome.com/5892b83959.js" crossorigin="anonymous"></script>
+
+	</head>
+
+	<body id="edit-page-body">
+    
+
+		<!--NAV BAR SECTION-->
+		<section id="navbar">
+			<div class="topnav">
+				<div class="left-div">
+					<a  href="/home/<%= userid %>">Home</a>
+					<a href= "/home/<%= userid %>/addRegister" >add Register</a> 
+					<a class="active" href= "/home/<%= userid %>/edit_profile" >Profile settings</a>
+					<a href= "/home/<%= userid %>/allCarPool" >View All Car Pool</a>
+				</div>
+
+				<div class="right-div">
+					<span id="user-name"><%= userInfo.name %> <%= userInfo.surname %></span>
+					<i class='fas fa-user-circle' onclick="dropDown()"></i>
+				</div>
+			
+				<div class="dropdown">
+					<ul>
+						<li><a href="/home/<%= userid %>/edit_profile"><i class="fa fa-gear" aria-hidden="true"></i> Settings</a></li>
+						<li><a href="/logout"><i class="fas fa-sign-out-alt" aria-hidden="true"></i> Logout</a></li>
+							
+					</ul>
+				</div>
+			</div>
+		
+		</section><br><br><br>
+
+		
+		<!--EDIT FORM SECTION-->
+		<section>
+			<div id="form-container">
+				<div class="err-message"><%= message%></div>
+		  
+				<div id="title"><h5>Edit the Profile</h5></div>
+				<hr style="border: 1px solid #f1f1f1;"><br>
+	
+				<form action="/home/<%= userid %>/edit_profile" method="post">
+			
+					<label for="name"><i class="fa fa-user"></i> First Name</label>
+					<input id="name" value="<%= userInfo.name %>" name="name" type="text"  placeholder="First name" autofocus required><br>
+	
+					<label for="surname"><i class="fa fa-user"></i> Last Name</label>
+					<input id="surname" value="<%= userInfo.surname %>" name="surname" type="text"  placeholder="Last name" required><br>
+	
+					<label for="phone">Enter a phone number:</label>
+					<input id="phone" type="tel" value="<%= userInfo.phone %>"  name="phone" placeholder="0123456789" pattern="^0[0-9]{9}" >
+	
+					<label for="email"><i class="fa fa-envelope" ></i> Email</label>
+					<input value="<%= userInfo.email %>" name="email" type="text" id="email" placeholder="Enter Email" required><br>
+	
+					<label for="password"><i class="fa fa-key" ></i> Password</label>
+					<input name="password" type="password" id="password" placeholder="Enter Password" required><br>
+	
+					<label for="password"><i class="fa fa-key"></i> Repeat Password</label>
+					<input name="password2" type="password" id="password" placeholder="Repeat Password" required><br>
+	
+					<input type="checkbox" onclick="showpass()"> Show Password<br>
+	
+					<input type="submit" id="button" value="Update">
+					<br>
+					<div id="foot"><h5>Updating your account Info</h5></div>
+					<br>
+				</form>
+	
+			</div>
+		</section>
+		
+		<script src="/scripts/functions.js" type="text/javascript"></script>
+	</body>
+</html>
+
